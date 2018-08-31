@@ -4,49 +4,44 @@ import { createStackNavigator,} from 'react-navigation';
 
 export default class App extends React.Component {
   render() {
-    return <RootStack />
+    return <LoginScreen />
   }
 }
 
-class HomeScreen extends React.Component {
+class LoginScreen extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state={
-      enteredText: 'Your text will appear here',
-    }
 
   }
-
-  static navigationOptions = {
-    title: 'Home',
-  };
 
   render() {
     return (
       <View style={styles.container}>
-        <TextInput underlineColorAndroid= {'transparent'} placeholder='Place text here' 
-        onChangeText={(newText) => this.setState({enteredText: newText})}/>
-        <Text>{this.state.enteredText}</Text>
+        <Text style={{fontSize: 30, flex: 3, textAlignVertical: "center"}}>Sign Up</Text>
+        <View style={styles.textfieldStackview}>
+          <TextInput placeholder='clientID' style={styles.textfields}/>
+          <TextInput placeholder='username' style={styles.textfields}/>
+          <TextInput placeholder='password' style={styles.textfields}/>
+        </View>
+        <Text style={{flex: 1}}>Don't have an account? Sign up here</Text>
       </View>
     );
   }
 }
 
-const RootStack = createStackNavigator(
-  {
-    Home: HomeScreen,
-  },
-  {
-    initialRouteName: 'Home',
-  }
-);
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f5f5f5',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: "space-around",
+  },
+  textfieldStackview: {
+    justifyContent: "flex-start",
+    flex:4,
+  },
+  textfields: {
+    width: 120, 
+    textAlign: "center",
   },
 });
